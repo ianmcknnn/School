@@ -2,6 +2,8 @@ require_relative './student.rb'
 require_relative './classroom.rb'
 require_relative './teacher.rb'
 
+require 'pry'
+
 class Student
 
   attr_reader :name, :student_id
@@ -30,6 +32,9 @@ class Student
 
   def self.pro_student
     #returns an array of student instances that have more than one teacher
+    self.all.select do |student|
+      student.teachers.length > 1
+    end
   end
 
 end
